@@ -1,3 +1,11 @@
+'''
+este codigo es un puto desastre, mitad gpt mitad neuronas muertas
+cualquier cambio es bienvenido
+la intencion era consultar si el correo ingresado en input aparece en la pagina del codigo, pero da un error q no he arreglado
+'''
+
+
+
 import requests
 from colorama import init, Fore, Style
 
@@ -13,9 +21,9 @@ def emailbuscar(email):
         if resp.status_code == 200:
             datos = resp.json()
             if datos.get("found"):
-                print(f"{Fore.GREEN}[+] El email {email} aparece en brechas.{Fore.RESET}")
+                print(f"{Fore.GREEN}[+] El email {email} aparece en lastcheck.{Fore.RESET}")
             else:
-                print(f"{Fore.YELLOW}[-] El email {email} NO aparece en brechas.{Fore.RESET}")
+                print(f"{Fore.YELLOW}[-] El email {email} NO aparece en lastchck.{Fore.RESET}")
         else:
             print(f"{Fore.RED}Error al consultar LeakCheck API. Código: {resp.status_code}{Fore.RESET}")
     except requests.RequestException as e:
