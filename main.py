@@ -2,7 +2,9 @@ from colorama import init, Fore
 init(autoreset=True)
 
 def menu():
+    print(Fore.CYAN + "----------------------------------------")
     print(Fore.CYAN + "Prototipo de herramienta basica de OSINT")
+    print(Fore.CYAN + "----------------------------------------")
     print(Fore.LIGHTCYAN_EX + '1. Comprobar correo e-mail')
     print(Fore.LIGHTCYAN_EX + '2. Ver datos de una IP')
     print(Fore.LIGHTCYAN_EX + '3. Buscar nombre de usuario')
@@ -11,7 +13,6 @@ def menu():
     
 def main():
     while True:
-        
         opcion = input(Fore.YELLOW + 'Selecciona una opcion: ')
         if opcion == '1':
             from modulos import emailcheck
