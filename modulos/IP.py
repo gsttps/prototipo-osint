@@ -3,10 +3,14 @@ from colorama import init, Fore, Style
 
 init(autoreset=True) #necesario para los colores en la terminal
 
-def ipinfo():
+def check_ip():
     while True:
-        print(f"{Fore.CYAN}Ver datos de una ip{Fore.RESET}")   
-        ip = input(f"{Fore.YELLOW}Ingrese una IP: {Fore.RESET}")
+        print(f"\n{Fore.CYAN}=== VER DATOS DE UNA IP ==={Fore.RESET}")   
+        ip = input(f"{Fore.YELLOW}Ingrese una IP (o 'salir' para volver): {Fore.RESET}").strip()
+        if ip.lower() == 'salir':
+            break
+        if not ip:
+            continue
         url = f"https://ipinfo.io/{ip}/json?token=a1d4c88db9e5fe"
         try:
             response = requests.get(url)
@@ -20,17 +24,15 @@ def ipinfo():
                 print(f"{Fore.CYAN}Código Postal: {Fore.GREEN}{datos.get('postal', 'N/A')}")
                 print(f"{Fore.CYAN}Hostname: {Fore.GREEN}{datos.get('hostname', 'N/A')}")
                 print(f"{Fore.CYAN}Anycast: {Fore.GREEN}{datos.get('anycast', 'N/A')}")
-            
-            
             else:
                 print(f"{Fore.RED}No se pudo obtener información de la IP.{Fore.RESET}")
         except requests.RequestException as e:
             print(f"{Fore.RED}Error al consultar la API: {e}{Fore.RESET}")
+        
         continuar = input(f"{Fore.YELLOW}¿Desea consultar otra IP? (s/n): {Fore.RESET}")
         if continuar.lower() != 's':
             print(f"{Fore.GREEN}Saliendo del módulo de IP...{Fore.RESET}")
             break
-ipinfo()
 
 if __name__ == "__main__":
-    ipinfo()
+    check_ip()

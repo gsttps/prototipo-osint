@@ -19,9 +19,14 @@ PLATAFORMAS = {
     #se pueden agregar mas plataformas, no se me ocurrieron mas xd
 }
 
-def username():
+def check_username():
     while True:
-        user = input(f'{Fore.YELLOW}ingrrese usuario a buscar: {Fore.RESET}')
+        print(f"\n{Fore.CYAN}=== BUSCAR NOMBRE DE USUARIO ==={Fore.RESET}")
+        user = input(f'{Fore.YELLOW}Ingrese usuario a buscar (o \'salir\' para volver): {Fore.RESET}').strip()
+        if user.lower() == 'salir':
+            break
+        if not user:
+            continue
         print(f'{Fore.CYAN}\nBuscando usuario: {user}\n{Fore.RESET}')
         
         for plataforma, url_patron in PLATAFORMAS.items():
@@ -34,19 +39,13 @@ def username():
                     print(f'{Fore.RED}Usuario no encontrado en {plataforma}: {url}{Fore.RESET}')
                 else:
                     print(f'{Fore.YELLOW}Error al buscar en {plataforma}: {url} (Status code: {response.status_code}){Fore.RESET}')
-                
-                
             except requests.RequestException as e:
                 print(f"{Fore.MAGENTA}[!] {plataforma}: Error → {e}")
         
-        
-        continuar = input(f'{Fore.YELLOW}Desea buscar otro usuario? (s/n): {Fore.RESET}')
+        continuar = input(f'{Fore.YELLOW}¿Desea buscar otro usuario? (s/n): {Fore.RESET}')
         if continuar.lower() != 's':
-            print(f'{Fore.RED}Saliendo del programa...{Fore.RESET}')
+            print(f'{Fore.GREEN}Saliendo del buscador de usuario...{Fore.RESET}')
             break
-        
-
-username()
 
 if __name__ == "__main__":
-    username()
+    check_username()
