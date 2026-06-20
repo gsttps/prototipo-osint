@@ -1,40 +1,32 @@
-# osint_rancio
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![MIT](https://img.shields.io/badge/Windows-Linux-success)
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-![MIT](https://img.shields.io/badge/Windows-Linux-success)
-
 # OSINT RANCIO
 
-**OSINT RANCIO** es una herramienta de código abierto desarrollada en Python, diseñada para facilitar investigaciones de código abierto (OSINT). Con una interfaz sencilla basada en terminal, permite recopilar información valiosa sobre dominios, direcciones IP, correos electrónicos y nombres de usuario.
-
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
-![MIT](https://img.shields.io/badge/Windows-Linux-success)
+![OS](https://img.shields.io/badge/Windows-Linux-success)
+
+**OSINT RANCIO** es una herramienta de código abierto desarrollada en Python, diseñada para facilitar investigaciones de fuentes abiertas (OSINT). Con una interfaz sencilla basada en terminal, permite recopilar información valiosa sobre dominios, direcciones IP, correos electrónicos y nombres de usuario.
+
+---
 
 ## 📋 Características Principales
 
-*   **📊 Análisis de Dominios**:
-    *   Obtiene información WHOIS y RDAP.
-    *   Muestra registros DNS (A, MX, NS, TXT).
-    *   Detecta servidores de nombres.
-*   **📧 Verificación de Correo**:
-    *   Comprueba si existe un buzón de correo electrónico.
-    *   Verifica si el dominio tiene registros MX (indicando capacidad de recibir correos).
-*   **🔢 Consultas de IP**:
-    *   Recupera información geográfica (país, región, ciudad).
-    *   Muestra el nombre del proveedor de Internet (ISP).
-    *   Realiza pruebas de ping básicas para verificar conectividad.
-*   **👤 Búsqueda de Usuarios**:
-    *   Busca un nombre de usuario en múltiples plataformas sociales (GitHub, Instagram, TikTok, etc.).
-    *   Proporciona enlaces directos a los perfiles encontrados.
-*   **🚪 Escaneo de Puertos**:
-    *   Escaneo básico de puertos TCP.
-    *   Identifica puertos abiertos y servicios asociados.
+* **📊 Análisis de Dominios**:
+  * Obtiene información WHOIS y RDAP.
+  * Soporte de fallback automático para consultas WHOIS vía socket (puerto 43) en caso de errores en RDAP (como el error 403 en TLDs tipo `.cl`).
+  * Muestra registros DNS (A, MX, NS, TXT) vía Google DNS API.
+* **📧 Verificación de Correo (Leaks)**:
+  * Comprueba si un correo electrónico aparece en filtraciones de datos conocidas mediante la API pública de LeakCheck.
+  * Muestra el conteo de filtraciones, campos de datos expuestos (contraseñas, nombres) y las bases de datos origen.
+* **🔢 Consultas de IP**:
+  * Recupera información geográfica (país, región, ciudad, coordenadas) y proveedor de Internet (ISP) usando IPInfo.
+* **👤 Búsqueda Concurrente de Usuarios**:
+  * Escanea de manera ultra rápida en paralelo (usando multithreading) si un nombre de usuario existe en 11 plataformas populares (GitHub, Instagram, Twitter, TikTok, Steam, etc.).
+* **🚪 Escaneo de Puertos Concurrente**:
+  * Escanea puertos TCP en paralelo con 100 hilos.
+  * Soporta escaneo de puertos comunes, rangos personalizados o listas específicas.
+* **📄 Generador de Reportes**:
+  * Permite exportar los resultados de cualquier módulo a archivos de reporte organizados en la carpeta `reportes/`.
+  * Limpia de manera automática las secuencias de colores ANSI para que los archivos TXT sean legibles en cualquier editor de texto básico (como el Bloc de Notas).
 
 ---
 
@@ -42,31 +34,34 @@
 
 ### Requisitos Previos
 
-*   **Python 3.8** o superior.
-*   **Git** (recomendado para clonar el repositorio).
+* **Python 3.10** o superior.
+* **Git** (recomendado para clonar el repositorio).
 
 ### Pasos de Instalación
 
-1.  **Clona el repositorio** (o descarga el código fuente):
-    ```bash
-    git clone https://github.com/tu_usuario/osint_rancio.git
-    cd osint_rancio
-    ```
+1. **Clona el repositorio** (o descarga el código fuente):
 
-2.  **Instala las dependencias**:
-    Se recomienda usar un entorno virtual:
-    ```bash
-    python -m venv venv
-    # En Windows
-    venv\Scripts\activate
-    # En Linux/Mac
-    source venv/bin/activate
-    ```
+   ```bash
+   git clone https://github.com/tu_usuario/osint_rancio.git
+   cd osint_rancio
+   ```
 
-    Luego instala las librerías necesarias:
-    ```bash
-    pip install -r requirements.txt
-    ```
+2. **Instala las dependencias**:
+   Se recomienda usar un entorno virtual:
+
+   ```bash
+   python -m venv venv
+   # En Windows
+   venv\Scripts\activate
+   # En Linux/Mac
+   source venv/bin/activate
+   ```
+
+   Luego instala las librerías necesarias:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### Ejecución
 
@@ -76,46 +71,25 @@ Una vez instalado, ejecuta la herramienta desde la terminal:
 python main.py
 ```
 
-Se mostrará el menú principal donde podrás seleccionar la herramienta que deseas utilizar.
-
 ---
 
 ## 🛠️ Desarrollo
 
 Si deseas contribuir al proyecto o entender su estructura:
 
-*   **Estructura de Carpetas**:
-    *   `main.py`: Punto de entrada principal y gestor del menú.
-    *   `modulos/`: Contiene cada herramienta como un módulo independiente.
-        *   `emailcheck.py`: Verificación de correos electrónicos.
-        *   `IP.py`: Consultas de direcciones IP.
-        *   `userfinder.py`: Búsqueda de nombres de usuario.
-        *   `ver_dominio.py`: Análisis de dominios y DNS.
-        *   `portscanner.py`: Escaneo de puertos.
-*   **Dependencias**:
-    *   `colorama`: Para coloración en terminal.
-    *   `requests`: Para peticiones HTTP (APIs, RDAP).
-    *   `socket`: Para consultas WHOIS directas.
+* **Estructura de Carpetas**:
+  * `main.py`: Punto de entrada principal y gestor del menú de la terminal.
+  * `reportes/`: Directorio autogenerado donde se guardan los reportes TXT.
+  * `modulos/`: Contiene las herramientas modulares:
+    * `emailcheck.py`: Comprobador de filtraciones de correos electrónicos.
+    * `IP.py`: Consultas de direcciones IP.
+    * `userfinder.py`: Buscador de usuarios multihilo.
+    * `ver_dominio.py`: Análisis de dominios, DNS y WHOIS con socket fallback.
+    * `portscanner.py`: Escáner de puertos TCP multihilo.
+    * `reporter.py`: Generador de reportes en TXT limpios.
+* **Dependencias externas**:
+  * `colorama`: Para dar formato y colores al texto en la consola.
+  * `requests`: Para interactuar con las APIs HTTP.
+* **Dependencias integradas (Python Standard Library)**:
+  * `socket`, `concurrent.futures`, `re`, `os`, `threading`.
 
----
-
-## 📝 Licencia
-
-Este proyecto está licenciado bajo la **Licencia MIT**. Siéntete libre de usarlo, modificarlo y distribuirlo.
-
----
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, crea un *fork* del proyecto y abre un *Pull Request* con tu propuesta.
-
----
-
-## 📞 Contacto / Creador
-
-*   **Creador**: [Tu Nombre o Nick]
-*   **GitHub**: [Enlace a tu GitHub]
-
----
-
-*Este proyecto está en desarrollo continuo. ¡Gracias por usar OSINT RANCIO!* 🚀
