@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![OS](https://img.shields.io/badge/Windows-Linux-success)
 
-**OSINT RANCIO** es una herramienta de código abierto desarrollada en Python, diseñada para facilitar investigaciones de fuentes abiertas (OSINT). Con una interfaz sencilla basada en terminal, permite recopilar información valiosa sobre dominios, direcciones IP, correos electrónicos y nombres de usuario.
+Herramienta desarrollada en Python, diseñada para facilitar investigaciones de fuentes abiertas (OSINT). Con una interfaz sencilla basada en terminal, permite recopilar información valiosa sobre dominios, direcciones IP, correos electrónicos y nombres de usuario.
 
 ---
 
