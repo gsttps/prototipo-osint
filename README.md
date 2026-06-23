@@ -37,7 +37,7 @@ Herramienta desarrollada en Python, diseñada para facilitar investigaciones de 
 1. **Clona el repositorio** (o descarga el código fuente):
 
    ```bash
-   git clone https://github.com/tu_usuario/osint_rancio.git
+   git clone https://github.com/tu_usuario/prototipo-osintgit
    cd osint_rancio
    ```
 
