@@ -8,29 +8,29 @@ Herramienta desarrollada en Python, diseñada para facilitar investigaciones de 
 
 ---
 
-##  Características Principales
+## Características Principales
 
-* ** Análisis de Dominios**:
+* **Análisis de Dominios**:
   * Obtiene información WHOIS y RDAP.
   * Soporte de fallback automático para consultas WHOIS vía socket (puerto 43) en caso de errores en RDAP (como el error 403 en TLDs tipo `.cl`).
   * Muestra registros DNS (A, MX, NS, TXT) vía Google DNS API.
-* ** Verificación de Correo (Leaks)**:
+* **Verificación de Correo (Leaks)**:
   * Comprueba si un correo electrónico aparece en filtraciones de datos conocidas mediante la API pública de LeakCheck.
   * Muestra el conteo de filtraciones, campos de datos expuestos (contraseñas, nombres) y las bases de datos origen.
-* ** Consultas de IP**:
+* **Consultas de IP**:
   * Recupera información geográfica (país, región, ciudad, coordenadas) y proveedor de Internet (ISP) usando IPInfo.
-* ** Búsqueda Concurrente de Usuarios**:
+* **Búsqueda Concurrente de Usuarios**:
   * Escanea de manera ultra rápida en paralelo (usando multithreading) si un nombre de usuario existe en 11 plataformas populares (GitHub, Instagram, Twitter, TikTok, Steam, etc.).
-* **󰺟 Escaneo de Puertos Concurrente**:
+* **Escaneo de Puertos Concurrente**:
   * Escanea puertos TCP en paralelo con 100 hilos.
   * Soporta escaneo de puertos comunes, rangos personalizados o listas específicas.
-* ** Generador de Reportes**:
+* **Generador de Reportes**:
   * Permite exportar los resultados de cualquier módulo a archivos de reporte organizados en la carpeta `reportes/`.
   * Limpia de manera automática las secuencias de colores ANSI para que los archivos TXT sean legibles en cualquier editor de texto básico (como el Bloc de Notas).
 
 ---
 
-##  Instalación y Uso
+## Instalación y Uso
 
 ### Pasos de Instalación
 
@@ -68,7 +68,7 @@ python main.py
 
 ---
 
-##  Desarrollo
+## Desarrollo
 
 Si deseas contribuir al proyecto o entender su estructura:
 
