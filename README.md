@@ -1,4 +1,4 @@
-# OSINT RANCIO
+# herramienta de prototipo
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
@@ -31,11 +31,6 @@
 ---
 
 ## 🚀 Instalación y Uso
-
-### Requisitos Previos
-
-* **Python 3.10** o superior.
-* **Git** (recomendado para clonar el repositorio).
 
 ### Pasos de Instalación
 
