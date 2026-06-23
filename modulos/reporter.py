@@ -45,3 +45,4 @@ def guardar_reporte(modulo, target, lineas):
     except Exception as e:
         print(f"{Fore.RED}Error al escribir el archivo de reporte: {e}{Fore.RESET}")
         return False
+# 

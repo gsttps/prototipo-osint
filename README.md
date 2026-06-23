@@ -87,4 +87,3 @@ Si deseas contribuir al proyecto o entender su estructura:
   * `requests`: Para interactuar con las APIs HTTP.
 * **Dependencias integradas (Python Standard Library)**:
   * `socket`, `concurrent.futures`, `re`, `os`, `threading`.
-
